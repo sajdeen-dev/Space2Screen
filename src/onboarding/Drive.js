@@ -6,12 +6,12 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
-  Dimensions,
+  View
 } from 'react-native';
 import { wp, hp } from '../utils/responsive';
 import { AppColors } from '../utils/AppColors';
 import { RFValue } from 'react-native-responsive-fontsize';
+import { AppImages } from '../utils/AppImages';
 
 
 const slides = [
@@ -19,21 +19,21 @@ const slides = [
     id: 1,
     title: 'Numerous free\ntrial courses',
     subtitle: 'Free courses for you to\nfind your way to learning',
-    image: require('../assets/Illustration01.png'),
+    image: AppImages.illustration01,
   },
   {
     id: 2,
     title: 'Quick and easy \n learning',
     subtitle:
       'Easy and fast learning at \n any time to help you \n improve various skills.',
-    image: require('../assets/Illustration01.png'),
+    image: AppImages.illustration02,
   },
   {
     id: 3,
     title: 'Create your Own\nstudy plan',
     subtitle:
       'Study according to the \n study plan, make study \n more motivated',
-    image: require('../assets/Illustration01.png'),
+    image: AppImages.illustration03,
   },
 ];
 
@@ -60,10 +60,6 @@ const Drive = () => {
 
   const viewConfigRef = useRef({ viewAreaCoveragePercentThreshold: 50 });
 
-  const handleSkip = () => {
-    console.log('Skip Pressed');
-  };
-
   const renderItem = ({ item }) => (
     <View style={styles.slide}>
       <Image source={item.image} style={styles.image} resizeMode="contain" />
@@ -74,9 +70,6 @@ const Drive = () => {
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <TouchableOpacity style={styles.skipButton} onPress={handleSkip}>
-        <Text style={styles.skipText}>Skip</Text>
-      </TouchableOpacity>
 
       <FlatList
         ref={flatListRef}
@@ -110,14 +103,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: AppColors.bgColor,
     paddingHorizontal: wp(5),
-  },
-  skipButton: {
-    alignSelf: 'flex-end',
-    marginTop: hp(2.5),
-  },
-  skipText: {
-    color: AppColors.textSecondary,
-    fontSize: RFValue(14),
   },
   flatList: {
     flexGrow: 0,
